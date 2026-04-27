@@ -4,6 +4,10 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author unifriferreira
@@ -17,6 +21,64 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnLog1() {
+        return btnLog1;
+    }
+
+    public void setBtnLog1(JButton btnLog1) {
+        this.btnLog1 = btnLog1;
+    }
+
+    public JButton getBtnSign() {
+        return btnSign;
+    }
+
+    public void setBtnSign(JButton btnSign) {
+        this.btnSign = btnSign;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getLblPassword() {
+        return lblPassword;
+    }
+
+    public void setLblPassword(JLabel lblPassword) {
+        this.lblPassword = lblPassword;
+    }
+
+    public JLabel getLblUser() {
+        return lblUser;
+    }
+
+    public void setLblUser(JLabel lblUser) {
+        this.lblUser = lblUser;
+    }
+
+    public JTextField getTxtPwdLog() {
+        return txtPwdLogin;
+    }
+
+    public void setTxtPwdLog(JTextField txtPwdLog) {
+        this.txtPwdLogin = txtPwdLog;
+    }
+
+    public JTextField getTxtUserLogin() {
+        return txtUserLogin;
+    }
+
+    public void setTxtUserLogin(JTextField txtUserLogin) {
+        this.txtUserLogin = txtUserLogin;
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +90,7 @@ public class Login extends javax.swing.JFrame {
 
         lblUser = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        txtPwdLog = new javax.swing.JTextField();
+        txtPwdLogin = new javax.swing.JTextField();
         txtUserLogin = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnSign = new javax.swing.JButton();
@@ -42,9 +104,9 @@ public class Login extends javax.swing.JFrame {
         lblPassword.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         lblPassword.setText("Senha:");
 
-        txtPwdLog.addActionListener(new java.awt.event.ActionListener() {
+        txtPwdLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPwdLogActionPerformed(evt);
+                txtPwdLoginActionPerformed(evt);
             }
         });
 
@@ -82,7 +144,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUserLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPwdLog, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPwdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(btnSign)
@@ -102,7 +164,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
-                    .addComponent(txtPwdLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPwdLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSign, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,9 +175,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPwdLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwdLogActionPerformed
+    private void txtPwdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwdLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPwdLogActionPerformed
+    }//GEN-LAST:event_txtPwdLoginActionPerformed
 
     private void txtUserLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserLoginActionPerformed
         // TODO add your handling code here:
@@ -162,7 +224,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JTextField txtPwdLog;
+    private javax.swing.JTextField txtPwdLogin;
     private javax.swing.JTextField txtUserLogin;
     // End of variables declaration//GEN-END:variables
 }
