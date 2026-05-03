@@ -13,7 +13,9 @@ import javax.swing.JTextField;
  */
 public class Login extends javax.swing.JFrame {
 
-
+    /**
+     * Creates new form login
+     */
     public JButton getBtnLog1() {
         return btnLog1;
     }
