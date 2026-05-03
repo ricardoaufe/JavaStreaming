@@ -12,7 +12,6 @@ import javax.swing.JTextField;
  * @author unifriferreira
  */
 public class Login extends javax.swing.JFrame {
-
     /**
      * Creates new form login
      */

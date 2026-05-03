@@ -34,11 +34,14 @@ public class LoginControl {
                 JOptionPane.showMessageDialog(screen1, "Login Feito!",
                         "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 String name =  res.getString("name");
-                String login = res.getString("user"); //VERIFICAR DEPOIS
+                String login = res.getString("user");
                 String pwd = res.getString("password");
-                //Logged screen2 = new Logged(new User(name, user, pwd));
-                //screen2.setVisible(true);
-                //screen1.setVisible(false);
+                
+                User loggedUser = new User(login, name, pwd);
+                
+                view.Home home = new view.Home();
+                home.setVisible(true);
+                screen1.setVisible(false);
               
             }else{
                 JOptionPane.showMessageDialog(screen1, "Login não efetuado :(",
