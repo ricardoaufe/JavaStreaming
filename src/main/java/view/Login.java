@@ -7,19 +7,12 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 /**
  *
  * @author unifriferreira
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form login
-     */
-    public Login() {
-        initComponents();
-    }
 
     public JButton getBtnLog1() {
         return btnLog1;
@@ -217,7 +210,7 @@ public class Login extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLog1;
     private javax.swing.JButton btnSign;

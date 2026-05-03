@@ -15,10 +15,10 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 
-public class LoginController {
+public class LoginControl {
     private Login screen1;
 
-    public LoginController(Login screen1) {
+    public LoginControl(Login screen1) {
         this.screen1 = screen1;
     }
         
@@ -34,11 +34,11 @@ public class LoginController {
                 JOptionPane.showMessageDialog(screen1, "Login Feito!",
                         "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 String name =  res.getString("name");
-                String user = res.getString("user"); //VERIFICAR DEPOIS
+                String login = res.getString("user"); //VERIFICAR DEPOIS
                 String pwd = res.getString("password");
                 //Logged screen2 = new Logged(new User(name, user, pwd));
                 //screen2.setVisible(true);
-                //screen1.setVisibule(false);
+                //screen1.setVisible(false);
               
             }else{
                 JOptionPane.showMessageDialog(screen1, "Login não efetuado :(",
