@@ -17,7 +17,7 @@ public class UserDAO {
     }
     
     public ResultSet consult (User user) throws SQLException{
-        String sql = "select * from usertb where usuario = ? and senha = ?";
+        String sql = "select * from usertb where user = ? and password = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, user.getUser());
         statement.setString(2, user.getPassword());
