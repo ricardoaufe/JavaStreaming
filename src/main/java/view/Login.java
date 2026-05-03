@@ -12,9 +12,22 @@ import javax.swing.JTextField;
  * @author unifriferreira
  */
 public class Login extends javax.swing.JFrame {
-    /**
-     * Creates new form login
-     */
+    
+    private controller.LoginControl c;
+
+    public Login() {
+        initComponents();
+        c = new controller.LoginControl(this);
+
+        btnLog1.addActionListener(e -> c.userLogin());
+
+        btnSign.addActionListener(e -> {
+            SignUp signUp = new SignUp();
+            signUp.setVisible(true);
+            this.dispose();
+        });
+    }
+
     public JButton getBtnLog1() {
         return btnLog1;
     }
