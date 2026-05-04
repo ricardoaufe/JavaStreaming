@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 /**
  *
  * @author unifriferreira
@@ -16,6 +19,72 @@ public class SignUp extends javax.swing.JFrame {
     public SignUp() {
         initComponents();
     }
+
+    public JButton getBtnSignUp() {
+        return btnSignUp;
+    }
+
+    public void setBtnSignUp(JButton btnSignUp) {
+        this.btnSignUp = btnSignUp;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getLblName() {
+        return lblName;
+    }
+
+    public void setLblName(JLabel lblName) {
+        this.lblName = lblName;
+    }
+
+    public JLabel getLblPassword() {
+        return lblPassword;
+    }
+
+    public void setLblPassword(JLabel lblPassword) {
+        this.lblPassword = lblPassword;
+    }
+
+    public JLabel getLblUser() {
+        return lblUser;
+    }
+
+    public void setLblUser(JLabel lblUser) {
+        this.lblUser = lblUser;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public void setTxtName(JTextField txtName) {
+        this.txtName = txtName;
+    }
+
+    public JTextField getTxtPwdSign() {
+        return txtPwdSign;
+    }
+
+    public void setTxtPwdSign(JTextField txtPwdSign) {
+        this.txtPwdSign = txtPwdSign;
+    }
+
+    public JTextField getTxtUserSign() {
+        return txtUserSign;
+    }
+
+    public void setTxtUserSign(JTextField txtUserSign) {
+        this.txtUserSign = txtUserSign;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
