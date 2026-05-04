@@ -17,19 +17,19 @@ public class UserDAO {
     }
     
     public ResultSet consult (User user) throws SQLException{
-        String sql = "select * from usertb where user = ? and password = ?";
+        String sql = "select * from userstb where user = ? and password = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, user.getUser());
         statement.setString(2, user.getPassword());
         statement.execute();
-        ResultSet result = statement.getResultSet();
+        ResultSet result = statement.executeQuery();
         return result;
         
     }
     
     public void insert (User user) throws SQLException{
         String sql = 
-                "insert into usertb (name, user, password) values (?, ?, ?)";
+                "insert into userstb (name, user, password) values (?, ?, ?)";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, user.getName());
         statement.setString(2, user.getUser());

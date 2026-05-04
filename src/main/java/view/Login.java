@@ -19,8 +19,6 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         c = new controller.LoginControl(this);
 
-        btnLog1.addActionListener(e -> c.userLogin());
-
         btnSign.addActionListener(e -> {
             SignUp signUp = new SignUp();
             signUp.setVisible(true);
@@ -133,6 +131,11 @@ public class Login extends javax.swing.JFrame {
 
         btnLog1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLog1.setText("Entrar");
+        btnLog1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLog1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,6 +192,10 @@ public class Login extends javax.swing.JFrame {
     private void txtUserLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserLoginActionPerformed
+
+    private void btnLog1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLog1ActionPerformed
+        c.userLogin();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLog1ActionPerformed
 
     /**
      * @param args the command line arguments

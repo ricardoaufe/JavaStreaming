@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Connect {
     public Connection getConnection() throws SQLException{
         Connection connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/alunos",
+                "jdbc:postgresql://localhost:5432/users",
                 "postgres", "fei");
     
         return connection;   

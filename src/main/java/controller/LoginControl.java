@@ -25,6 +25,12 @@ public class LoginControl {
     public void userLogin(){
         User user = new User( null, screen1.getTxtUserLogin().getText(),
         screen1.getTxtPwdLog().getText());
+        
+        System.out.println("DEBUG: Tentando logar com Usuário: [" + 
+                screen1.getTxtUserLogin().getText() + "]");
+        System.out.println("DEBUG: Tentando logar com Senha: [" + 
+                screen1.getTxtPwdLog().getText() + "]");
+        
         Connect connect = new Connect();
         try{
             Connection conn = connect.getConnection();
@@ -35,14 +41,14 @@ public class LoginControl {
                         "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 String name =  res.getString("name");
                 String login = res.getString("user");
-                String pwd = res.getString("password");
+                String password = res.getString("password");
                 
-                User loggedUser = new User(login, name, pwd);
+                User loggedUser = new User(login, name, password);
                 
                 view.Home home = new view.Home();
                 home.setVisible(true);
                 screen1.setVisible(false);
-              
+          
             }else{
                 JOptionPane.showMessageDialog(screen1, "Login não efetuado :(",
                         "Erro", JOptionPane.ERROR_MESSAGE);
@@ -50,6 +56,7 @@ public class LoginControl {
             
             
         }catch(SQLException e){
+            e.printStackTrace(); 
             JOptionPane.showMessageDialog(screen1, "Erro de conexão", 
             "Erro", JOptionPane.ERROR_MESSAGE);
         }
