@@ -25,6 +25,17 @@ public class Home extends javax.swing.JFrame {
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
 
     }
+     public javax.swing.JTextField getTxtSearchVideo() {
+        return txt_searchVideo;
+    }
+
+    public javax.swing.JButton getBtnSearchVideo() {
+        return btn_searchVideo;
+    }
+
+    public javax.swing.JTextArea getTxtAreaResults() {
+        return txt_areaResults;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +48,10 @@ public class Home extends javax.swing.JFrame {
 
         btn_Logout = new javax.swing.JButton();
         lbl_welcome = new javax.swing.JLabel();
+        txt_searchVideo = new javax.swing.JTextField();
+        btn_searchVideo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_areaResults = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,24 +64,50 @@ public class Home extends javax.swing.JFrame {
         lbl_welcome.setText("                                BEM VINDO!");
         lbl_welcome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        txt_searchVideo.addActionListener(this::txt_searchVideoActionPerformed);
+
+        btn_searchVideo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_searchVideo.setText("Buscar");
+        btn_searchVideo.addActionListener(this::btn_searchVideoActionPerformed);
+
+        txt_areaResults.setColumns(20);
+        txt_areaResults.setRows(5);
+        jScrollPane1.setViewportView(txt_areaResults);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_welcome, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Logout)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lbl_welcome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_searchVideo)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(lbl_welcome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(btn_Logout)
-                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lbl_welcome))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(btn_Logout)))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_searchVideo))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -76,6 +117,14 @@ public class Home extends javax.swing.JFrame {
         new view.Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_LogoutActionPerformed
+
+    private void txt_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_searchVideoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchVideoActionPerformed
+
+    private void btn_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchVideoActionPerformed
+        txt_areaResults.setText("Buscando: " + txt_searchVideo.getText()); 
+    }//GEN-LAST:event_btn_searchVideoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +153,10 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Logout;
+    private javax.swing.JButton btn_searchVideo;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_welcome;
+    private javax.swing.JTextArea txt_areaResults;
+    private javax.swing.JTextField txt_searchVideo;
     // End of variables declaration//GEN-END:variables
 }
