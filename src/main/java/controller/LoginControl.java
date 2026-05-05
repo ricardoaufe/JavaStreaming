@@ -23,13 +23,10 @@ public class LoginControl {
     }
         
     public void userLogin(){
-        User user = new User( null, screen1.getTxtUserLogin().getText(),
-        screen1.getTxtPwdLog().getText());
-        
-        System.out.println("DEBUG: Tentando logar com Usuário: [" + 
-                screen1.getTxtUserLogin().getText() + "]");
-        System.out.println("DEBUG: Tentando logar com Senha: [" + 
-                screen1.getTxtPwdLog().getText() + "]");
+        User user = new User( 
+            null,
+            screen1.getTxtUserLogin().getText(),
+            screen1.getTxtPwdLog().getText());
         
         Connect connect = new Connect();
         try{
@@ -43,11 +40,11 @@ public class LoginControl {
                 String login = res.getString("user");
                 String password = res.getString("password");
                 
-                User loggedUser = new User(login, name, password);
+                User loggedUser = new User(name, login, password);
                 
                 view.Home home = new view.Home();
                 home.setVisible(true);
-                screen1.setVisible(false);
+                screen1.dispose();
           
             }else{
                 JOptionPane.showMessageDialog(screen1, "Login não efetuado :(",

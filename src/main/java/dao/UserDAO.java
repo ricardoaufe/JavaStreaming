@@ -17,13 +17,16 @@ public class UserDAO {
     }
     
     public ResultSet consult (User user) throws SQLException{
-        String sql = "select * from userstb where user = ? and password = ?";
+        String sql = "select * from userstb where \"user\" = ? and password = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
+        
+        System.out.println("DEBUG DAO user.getUser(): [" + user.getUser() + "]");
+        System.out.println("DEBUG DAO user.getPassword(): [" + user.getPassword() + "]");
+        
         statement.setString(1, user.getUser());
         statement.setString(2, user.getPassword());
         statement.execute();
-        ResultSet result = statement.executeQuery();
-        return result;
+        return statement.executeQuery();
         
     }
     
