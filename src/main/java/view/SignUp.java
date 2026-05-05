@@ -12,12 +12,17 @@ import javax.swing.JTextField;
  * @author unifriferreira
  */
 public class SignUp extends javax.swing.JFrame {
+    private controller.SignUpControl c;
 
     /**
      * Creates new form SignUp
      */
     public SignUp() {
         initComponents();
+        c = new controller.SignUpControl(this);
+        
+        btnSignUp.addActionListener(e -> c.saveUser());
+        
     }
 
     public JButton getBtnSignUp() {
@@ -132,6 +137,11 @@ public class SignUp extends javax.swing.JFrame {
 
         btnSignUp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSignUp.setText("Cadastrar");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
         lblName.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         lblName.setText("Nome:");
@@ -199,6 +209,10 @@ public class SignUp extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        c.saveUser();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments

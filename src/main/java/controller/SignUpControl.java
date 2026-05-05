@@ -35,8 +35,16 @@ public class SignUpControl {
             dao.insert(user);
             JOptionPane.showMessageDialog(screen3, "Usuário Cadastrado!",
                     "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            
+            view.Login login = new view.Login();
+            login.setVisible(true);
+            screen3.dispose();
+            
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(screen3, "Usuário Não Cadastrado!",
+            ex.printStackTrace();
+            
+            JOptionPane.showMessageDialog(screen3, 
+                    "Usuário Não Cadastrado!\n" + ex.getMessage(),
                     "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
