@@ -11,9 +11,6 @@ public class User {
     }
 
     public User(String name, String user, String password) {
-        System.out.println("DEBUG CONSTRUCTOR name: [" + name + "]");
-        System.out.println("DEBUG CONSTRUCTOR user: [" + user + "]");
-        System.out.println("DEBUG CONSTRUCTOR password: [" + password + "]");
         this.name = name;
         this.user = user;
         this.password = password;

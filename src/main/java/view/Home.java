@@ -4,6 +4,8 @@
  */
 package view;
 
+import model.User;
+
 /**
  *
  * @author Ricardo Ferreira
@@ -11,12 +13,16 @@ package view;
 public class Home extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
+    private User user;
 
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home(User user) {
         initComponents();
+        this.user = user;
+        
+        lbl_welcome.setText("Bem-vindo(a), " + user.getName());
     }
 
     /**

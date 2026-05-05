@@ -42,7 +42,7 @@ public class LoginControl {
                 
                 User loggedUser = new User(name, login, password);
                 
-                view.Home home = new view.Home();
+                view.Home home = new view.Home(loggedUser);
                 home.setVisible(true);
                 screen1.dispose();
           
