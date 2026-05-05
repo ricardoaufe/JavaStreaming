@@ -23,6 +23,7 @@ public class Home extends javax.swing.JFrame {
         this.user = user;
         
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
+
     }
 
     /**
@@ -42,6 +43,7 @@ public class Home extends javax.swing.JFrame {
         btn_Logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Logout.setText("Sair");
         btn_Logout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Logout.addActionListener(this::btn_LogoutActionPerformed);
 
         lbl_welcome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         lbl_welcome.setText("                                BEM VINDO!");
@@ -69,6 +71,11 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LogoutActionPerformed
+        new view.Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_LogoutActionPerformed
 
     /**
      * @param args the command line arguments
