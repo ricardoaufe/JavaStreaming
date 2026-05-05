@@ -14,6 +14,7 @@ public class Home extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
     private User user;
+    private controller.HomeControl c;
 
     /**
      * Creates new form Home
@@ -21,6 +22,7 @@ public class Home extends javax.swing.JFrame {
     public Home(User user) {
         initComponents();
         this.user = user;
+        c = new controller.HomeControl(this);
         
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
 
@@ -124,6 +126,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchVideoActionPerformed
         txt_areaResults.setText("Buscando: " + txt_searchVideo.getText()); 
+        c.searchVideo();
     }//GEN-LAST:event_btn_searchVideoActionPerformed
 
     /**
