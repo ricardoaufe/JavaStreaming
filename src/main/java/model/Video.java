@@ -9,26 +9,23 @@ package model;
  *
  * @author Ricardo Ferreira
  */
-public class Video {
-    private int id;
-    private String title;
-    private String description;
-    private String type;
+public abstract class Video {
+    protected int id;
+    protected String title;
+    protected String description;
     
     public Video() {
     }
 
-    public Video(int id, String title, String description, String type) {
+    public Video(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.type = type;
     }
 
-    public Video(String title, String description, String type) {
+    public Video(String title, String description) {
         this.title = title;
         this.description = description;
-        this.type = type;
     }
 
     public int getIt() {
@@ -55,14 +52,8 @@ public class Video {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-    
-    
-    
+    public abstract String getType();
 }
+    
+    
+    
