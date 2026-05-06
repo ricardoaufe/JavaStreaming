@@ -14,6 +14,9 @@ public abstract class Video {
     protected String title;
     protected String description;
     
+    protected int likes;
+    protected int dislikes;
+    
     public Video() {
     }
 
@@ -28,12 +31,12 @@ public abstract class Video {
         this.description = description;
     }
 
-    public int getIt() {
+    public int getId() {
         return id;
     }
 
-    public void setIt(int it) {
-        this.id = it;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -53,6 +56,7 @@ public abstract class Video {
     }
 
     public abstract String getType();
+    
 }
     
     
