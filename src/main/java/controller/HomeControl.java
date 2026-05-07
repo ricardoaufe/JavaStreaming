@@ -63,14 +63,46 @@ public class HomeControl {
             if (model.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(screen, "Nenhum vídeo encontrado.");
             }
-            
-            screen.getTbl_videos().getColumn(title);
+              screen.getTbl_videos().getColumn(title);
         }catch (SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(screen, "Erro ao buscar vídeos: \n" +
                     e.getMessage());
         }
     }
+            
+            
+    public void reactToSelectedVideo(String reactionType){
+
+        int selectedRow = screen.getTbl_videos().getSelectedRow();
+
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(screen, "Selecione um vídeo");
+            return;
+        }
+
+        try{
+            int videoId = (int) screen.getTbl_videos()
+                    .getValueAt(selectedRow, 0);
+
+            int userId = 1; //TROCAR DEPOIS PARA USUARIO REAL
+
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            ReactionDAO dao = new ReactionDAO(conn);
+
+            dao.toggleReaction(userId, videoId, reactionType);
+
+            searchVideo();
+        }catch(SQLException e) {
+            e.printStackTrace();
+            
+            JOptionPane.showMessageDialog(screen, "Erro ao reageir ao vídeo");
+        }
+    } 
+
+          
 
     
     

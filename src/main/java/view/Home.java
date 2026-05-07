@@ -182,11 +182,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_searchVideoActionPerformed
 
     private void btn_likeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_likeVideoActionPerformed
-        // TODO add your handling code here:
+        c.reactToSelectedVideo("LIKE");
     }//GEN-LAST:event_btn_likeVideoActionPerformed
 
     private void btn_dislikeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dislikeVideoActionPerformed
-        // TODO add your handling code here:
+        c.reactToSelectedVideo("DISLIKE");
     }//GEN-LAST:event_btn_dislikeVideoActionPerformed
 
     /**
