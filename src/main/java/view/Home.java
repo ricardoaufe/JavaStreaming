@@ -28,6 +28,16 @@ public class Home extends javax.swing.JFrame {
         //Blocks table editing manually;
         tbl_videos.setDefaultEditor(Object.class, null);
         tbl_videos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
+        btn_likeVideo.setEnabled(false);
+        btn_dislikeVideo.setEnabled(false);
+
+        tbl_videos.getSelectionModel().addListSelectionListener(e -> {
+            boolean selected = tbl_videos.getSelectedRow() != -1;
+
+            btn_likeVideo.setEnabled(selected);
+            btn_dislikeVideo.setEnabled(selected);
+        });
 
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
     }
@@ -61,6 +71,8 @@ public class Home extends javax.swing.JFrame {
         btn_searchVideo = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_videos = new javax.swing.JTable();
+        btn_likeVideo = new javax.swing.JButton();
+        btn_dislikeVideo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +104,14 @@ public class Home extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tbl_videos);
 
+        btn_likeVideo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_likeVideo.setText("Curtir");
+        btn_likeVideo.addActionListener(this::btn_likeVideoActionPerformed);
+
+        btn_dislikeVideo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_dislikeVideo.setText("Descurtir");
+        btn_dislikeVideo.addActionListener(this::btn_dislikeVideoActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,6 +135,12 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_likeVideo)
+                .addGap(18, 18, 18)
+                .addComponent(btn_dislikeVideo)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,8 +157,12 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_searchVideo))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_likeVideo)
+                    .addComponent(btn_dislikeVideo))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,6 +180,14 @@ public class Home extends javax.swing.JFrame {
     private void btn_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchVideoActionPerformed
         c.searchVideo();
     }//GEN-LAST:event_btn_searchVideoActionPerformed
+
+    private void btn_likeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_likeVideoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_likeVideoActionPerformed
+
+    private void btn_dislikeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dislikeVideoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_dislikeVideoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +216,8 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Logout;
+    private javax.swing.JButton btn_dislikeVideo;
+    private javax.swing.JButton btn_likeVideo;
     private javax.swing.JButton btn_searchVideo;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_welcome;
