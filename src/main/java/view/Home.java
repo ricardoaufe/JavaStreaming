@@ -24,7 +24,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.user = user;
         c = new controller.HomeControl(this);
-
+        
         //Blocks table editing manually;
         tbl_videos.setDefaultEditor(Object.class, null);
         tbl_videos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -178,7 +178,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_LogoutActionPerformed
 
     private void txt_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_searchVideoActionPerformed
-        // TODO add your handling code here:
+        btn_searchVideo.doClick();
     }//GEN-LAST:event_txt_searchVideoActionPerformed
 
     private void btn_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchVideoActionPerformed

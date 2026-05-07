@@ -18,6 +18,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         c = new controller.LoginControl(this);
+        
+        getRootPane().setDefaultButton(btnLog1);
 
         btnSign.addActionListener(e -> {
             SignUp signUp = new SignUp();
@@ -186,7 +188,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPwdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwdLoginActionPerformed
-        // TODO add your handling code here:
+        btnLog1.doClick();
     }//GEN-LAST:event_txtPwdLoginActionPerformed
 
     private void txtUserLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserLoginActionPerformed
