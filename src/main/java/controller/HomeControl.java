@@ -85,7 +85,7 @@ public class HomeControl {
             int videoId = (int) screen.getTbl_videos()
                     .getValueAt(selectedRow, 0);
 
-            int userId = 1; //TROCAR DEPOIS PARA USUARIO REAL
+            int userId = screen.getUser().getId();
 
             Connect connect = new Connect();
             Connection conn = connect.getConnection();

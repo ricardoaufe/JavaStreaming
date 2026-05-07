@@ -36,11 +36,12 @@ public class LoginControl {
             if(res.next()){
                 JOptionPane.showMessageDialog(screen1, "Login Feito!",
                         "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                int id = res.getInt("id");
                 String name =  res.getString("name");
                 String login = res.getString("user");
                 String password = res.getString("password");
                 
-                User loggedUser = new User(name, login, password);
+                User loggedUser = new User(id, name, login, password);
                 
                 view.Home home = new view.Home(loggedUser);
                 home.setVisible(true);

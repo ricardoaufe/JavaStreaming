@@ -41,6 +41,10 @@ public class Home extends javax.swing.JFrame {
 
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
     }
+
+    public User getUser() {
+        return user;
+    }
     
      public javax.swing.JTextField getTxtSearchVideo() {
         return txt_searchVideo;
