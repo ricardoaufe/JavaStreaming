@@ -24,10 +24,14 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.user = user;
         c = new controller.HomeControl(this);
-        
-        lbl_welcome.setText("Bem-vindo(a), " + user.getName());
 
+        //Blocks table editing manually;
+        tbl_videos.setDefaultEditor(Object.class, null);
+        tbl_videos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        lbl_welcome.setText("Bem-vindo(a), " + user.getName());
     }
+    
      public javax.swing.JTextField getTxtSearchVideo() {
         return txt_searchVideo;
     }
