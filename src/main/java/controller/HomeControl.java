@@ -6,10 +6,12 @@ package controller;
 
 import dao.Connect;
 import dao.VideoDAO;
+import dao.ReactionDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import view.Home;
 
 /**
@@ -32,20 +34,37 @@ public class HomeControl {
             
             VideoDAO dao = new VideoDAO(conn);
             ResultSet result = dao.searchByTitle(title);
-      
+            
+            ReactionDAO reactionDAO = new ReactionDAO(conn);
+           
             String text = "";
             
-            while (result.next()){
-                text += "Título: " + result.getString("title") + "\n";
-                text += "Tipo: " + result.getString("type") + "\n";
-                text += "Descrição: " + result.getString("description") + "\n";
-                text += "-----------------------------\n";
-        }
-            if (text.isEmpty()){
-                text = "Nenhum vídeo encontrado.";
+            DefaultTableModel model = 
+                    (DefaultTableModel) screen.getTbl_videos().getModel();
+            
+            model.setRowCount(0);
+            
+            while (result.next()) {
+                int videoId = result.getInt("id");
+
+                int likes = reactionDAO.countLikes(videoId);
+                int dislikes = reactionDAO.countDislikes(videoId);
+
+                model.addRow(new Object[]{
+                    videoId,
+                    result.getString("title"),
+                    result.getString("type"),
+                    result.getString("description"),
+                    likes,
+                    dislikes
+                });
             }
             
-            screen.getTxtAreaResults().setText(text);
+            if (model.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(screen, "Nenhum vídeo encontrado.");
+            }
+            
+            screen.getTbl_videos().getColumn(title);
         }catch (SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(screen, "Erro ao buscar vídeos: \n" +

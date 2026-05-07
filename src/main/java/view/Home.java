@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.JTable;
 import model.User;
 
 /**
@@ -35,9 +36,11 @@ public class Home extends javax.swing.JFrame {
         return btn_searchVideo;
     }
 
-    public javax.swing.JTextArea getTxtAreaResults() {
-        return txt_areaResults;
+    public javax.swing.JTable getTbl_videos() {
+        return tbl_videos;
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,8 +55,8 @@ public class Home extends javax.swing.JFrame {
         lbl_welcome = new javax.swing.JLabel();
         txt_searchVideo = new javax.swing.JTextField();
         btn_searchVideo = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_areaResults = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_videos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,26 +75,42 @@ public class Home extends javax.swing.JFrame {
         btn_searchVideo.setText("Buscar");
         btn_searchVideo.addActionListener(this::btn_searchVideoActionPerformed);
 
-        txt_areaResults.setColumns(20);
-        txt_areaResults.setRows(5);
-        jScrollPane1.setViewportView(txt_areaResults);
+        tbl_videos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Título", "Tipo", "Descrição", "Likes", "Dislikes"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_videos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_welcome, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_Logout)
-                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_searchVideo)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btn_searchVideo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Logout)))
+                        .addGap(15, 15, 15))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,8 +127,8 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_searchVideo))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,7 +144,6 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_searchVideoActionPerformed
 
     private void btn_searchVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchVideoActionPerformed
-        txt_areaResults.setText("Buscando: " + txt_searchVideo.getText()); 
         c.searchVideo();
     }//GEN-LAST:event_btn_searchVideoActionPerformed
 
@@ -157,9 +175,9 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Logout;
     private javax.swing.JButton btn_searchVideo;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_welcome;
-    private javax.swing.JTextArea txt_areaResults;
+    private javax.swing.JTable tbl_videos;
     private javax.swing.JTextField txt_searchVideo;
     // End of variables declaration//GEN-END:variables
 }
