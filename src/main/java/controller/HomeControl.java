@@ -7,6 +7,7 @@ package controller;
 import dao.Connect;
 import dao.VideoDAO;
 import dao.ReactionDAO;
+import dao.FavoriteDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -102,6 +103,32 @@ public class HomeControl {
         }
     } 
 
+    public void toggleFavoriteSelectedVideo() {
+    int selectedRow = screen.getTbl_videos().getSelectedRow();
+
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(screen, "Selecione um vídeo.");
+        return;
+    }
+
+    try {
+        int videoId = (int) screen.getTbl_videos().getValueAt(selectedRow, 0);
+        int userId = screen.getUser().getId();
+
+        Connect connect = new Connect();
+        Connection conn = connect.getConnection();
+
+        FavoriteDAO dao = new FavoriteDAO(conn);
+        dao.toggleFavorite(userId, videoId);
+
+        JOptionPane.showMessageDialog(screen, "Favoritos atualizados!");
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(screen,
+                "Erro ao atualizar favorito:\n" + e.getMessage());
+    }
+}
           
 
     

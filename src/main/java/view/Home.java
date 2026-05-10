@@ -29,6 +29,16 @@ public class Home extends javax.swing.JFrame {
         tbl_videos.setDefaultEditor(Object.class, null);
         tbl_videos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         
+        btn_favoriteVideo.setEnabled(false);
+
+        tbl_videos.getSelectionModel().addListSelectionListener(e -> {
+            boolean selected = tbl_videos.getSelectedRow() != -1;
+
+            btn_likeVideo.setEnabled(selected);
+            btn_dislikeVideo.setEnabled(selected);
+            btn_favoriteVideo.setEnabled(selected);
+        });
+        
         btn_likeVideo.setEnabled(false);
         btn_dislikeVideo.setEnabled(false);
 
@@ -57,6 +67,10 @@ public class Home extends javax.swing.JFrame {
     public javax.swing.JTable getTbl_videos() {
         return tbl_videos;
     }
+    
+    public javax.swing.JButton getBtn_favoriteVideo(){
+        return btn_favoriteVideo;
+    }
 
     
 
@@ -77,6 +91,7 @@ public class Home extends javax.swing.JFrame {
         tbl_videos = new javax.swing.JTable();
         btn_likeVideo = new javax.swing.JButton();
         btn_dislikeVideo = new javax.swing.JButton();
+        btn_favoriteVideo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,7 +101,7 @@ public class Home extends javax.swing.JFrame {
         btn_Logout.addActionListener(this::btn_LogoutActionPerformed);
 
         lbl_welcome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        lbl_welcome.setText("                                BEM VINDO!");
+        lbl_welcome.setText("                 BEM VINDO!");
         lbl_welcome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txt_searchVideo.addActionListener(this::txt_searchVideoActionPerformed);
@@ -116,57 +131,58 @@ public class Home extends javax.swing.JFrame {
         btn_dislikeVideo.setText("Descurtir");
         btn_dislikeVideo.addActionListener(this::btn_dislikeVideoActionPerformed);
 
+        btn_favoriteVideo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_favoriteVideo.setText("Favoritar");
+        btn_favoriteVideo.addActionListener(this::btn_favoriteVideoActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_searchVideo)
+                .addGap(0, 17, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btn_searchVideo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_Logout)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_Logout)
                         .addGap(15, 15, 15))))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(btn_favoriteVideo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_likeVideo)
                 .addGap(18, 18, 18)
                 .addComponent(btn_dislikeVideo)
-                .addGap(16, 16, 16))
+                .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(lbl_welcome))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btn_Logout)))
-                .addGap(35, 35, 35)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_welcome)
+                    .addComponent(btn_Logout))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_searchVideo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_likeVideo)
-                    .addComponent(btn_dislikeVideo))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(btn_dislikeVideo)
+                    .addComponent(btn_favoriteVideo))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,6 +208,10 @@ public class Home extends javax.swing.JFrame {
     private void btn_dislikeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dislikeVideoActionPerformed
         c.reactToSelectedVideo("DISLIKE");
     }//GEN-LAST:event_btn_dislikeVideoActionPerformed
+
+    private void btn_favoriteVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_favoriteVideoActionPerformed
+         c.toggleFavoriteSelectedVideo();
+    }//GEN-LAST:event_btn_favoriteVideoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,6 +241,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Logout;
     private javax.swing.JButton btn_dislikeVideo;
+    private javax.swing.JButton btn_favoriteVideo;
     private javax.swing.JButton btn_likeVideo;
     private javax.swing.JButton btn_searchVideo;
     private javax.swing.JScrollPane jScrollPane2;
