@@ -63,4 +63,21 @@ public class PlaylistDAO {
 
         statement.executeUpdate();
     }
+    public void addVideoToPlaylist(int playlistId, int videoId) throws SQLException {
+    String sql = """
+        INSERT INTO playlist_videostb (playlist_id, video_id, position)
+        VALUES (?, ?, (
+            SELECT COALESCE(MAX(position), 0) + 1 
+            FROM playlist_videostb
+            WHERE playlist_id = ?
+        ))
+    """;
+
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setInt(1, playlistId);
+    statement.setInt(2, videoId);
+    statement.setInt(3, playlistId);
+
+    statement.executeUpdate();
+}
 }
