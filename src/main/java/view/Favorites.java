@@ -75,6 +75,7 @@ public class Favorites extends javax.swing.JFrame {
         btn_deletePlaylist = new javax.swing.JButton();
         btn_openPlaylist = new javax.swing.JButton();
         txt_playlistName = new javax.swing.JTextField();
+        btn_addFavoriteToPlaylist = new javax.swing.JButton();
 
         btn_openFavorites.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_openFavorites.setText("Favoritos");
@@ -143,6 +144,10 @@ public class Favorites extends javax.swing.JFrame {
         btn_openPlaylist.setToolTipText("");
         btn_openPlaylist.addActionListener(this::btn_openPlaylistActionPerformed);
 
+        btn_addFavoriteToPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_addFavoriteToPlaylist.setText("Adicionar à Lista");
+        btn_addFavoriteToPlaylist.addActionListener(this::btn_addFavoriteToPlaylistActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,30 +156,30 @@ public class Favorites extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn_removeFavorite)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_backHome))
+                                .addGap(58, 58, 58)
+                                .addComponent(btn_addFavoriteToPlaylist))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_createPlaylist)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_openPlaylist)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_renamePlaylist)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_deletePlaylist)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(txt_playlistName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38))))))
+                        .addComponent(btn_createPlaylist)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_openPlaylist)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_renamePlaylist)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_deletePlaylist)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_backHome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_playlistName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(lbl_titleFavorites)
@@ -201,8 +206,10 @@ public class Favorites extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_removeFavorite)
-                            .addComponent(btn_backHome))
-                        .addGap(57, 57, 57)))
+                            .addComponent(btn_addFavoriteToPlaylist))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_backHome)
+                        .addGap(22, 22, 22)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_deletePlaylist)
                     .addComponent(btn_createPlaylist)
@@ -244,6 +251,10 @@ public class Favorites extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_openPlaylistActionPerformed
 
+    private void btn_addFavoriteToPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addFavoriteToPlaylistActionPerformed
+        c.addSelectedFavoriteToPlaylist();
+    }//GEN-LAST:event_btn_addFavoriteToPlaylistActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +281,7 @@ public class Favorites extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_addFavoriteToPlaylist;
     private javax.swing.JButton btn_backHome;
     private javax.swing.JButton btn_createPlaylist;
     private javax.swing.JButton btn_deletePlaylist;
