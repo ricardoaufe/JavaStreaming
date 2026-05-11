@@ -55,6 +55,33 @@ public class FavoritesControl {
         }
     }
     
+    public void removeSelectedFavorite() {
+        int selectedRow = screen.getTbl_favorites().getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(screen, "Selecione um favorito.");
+            return;
+        }
+
+        try {
+            int videoId = (int) screen.getTbl_favorites().getValueAt(selectedRow, 0);
+            int userId = screen.getUser().getId();
+
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            FavoriteDAO dao = new FavoriteDAO(conn);
+            dao.removeFavorite(userId, videoId);
+
+            loadFavorites();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(screen,
+                    "Erro ao remover favorito:\n" + e.getMessage());
+        }
+    }
+    
     public void createPlaylist() {
 
         String name = screen.getTxt_playlistName().getText();

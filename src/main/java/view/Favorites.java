@@ -225,7 +225,7 @@ public class Favorites extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backHomeActionPerformed
 
     private void btn_removeFavoriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeFavoriteActionPerformed
-        // TODO add your handling code here:
+        c.removeSelectedFavorite();
     }//GEN-LAST:event_btn_removeFavoriteActionPerformed
 
     private void btn_createPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createPlaylistActionPerformed
