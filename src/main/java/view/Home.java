@@ -16,7 +16,7 @@ public class Home extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
     private User user;
     private controller.HomeControl c;
-
+    
     /**
      * Creates new form Home
      */
@@ -92,6 +92,7 @@ public class Home extends javax.swing.JFrame {
         btn_likeVideo = new javax.swing.JButton();
         btn_dislikeVideo = new javax.swing.JButton();
         btn_favoriteVideo = new javax.swing.JButton();
+        btn_openFavorites = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,6 +136,10 @@ public class Home extends javax.swing.JFrame {
         btn_favoriteVideo.setText("Favoritar");
         btn_favoriteVideo.addActionListener(this::btn_favoriteVideoActionPerformed);
 
+        btn_openFavorites.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_openFavorites.setText("Favoritos");
+        btn_openFavorites.addActionListener(this::btn_openFavoritesActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,6 +168,10 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btn_dislikeVideo)
                 .addGap(11, 11, 11))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btn_openFavorites)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +180,9 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_welcome)
                     .addComponent(btn_Logout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(btn_openFavorites)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_searchVideo))
@@ -213,6 +224,11 @@ public class Home extends javax.swing.JFrame {
          c.toggleFavoriteSelectedVideo();
     }//GEN-LAST:event_btn_favoriteVideoActionPerformed
 
+    private void btn_openFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_openFavoritesActionPerformed
+        new view.Favorites(user).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_openFavoritesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +259,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btn_dislikeVideo;
     private javax.swing.JButton btn_favoriteVideo;
     private javax.swing.JButton btn_likeVideo;
+    private javax.swing.JButton btn_openFavorites;
     private javax.swing.JButton btn_searchVideo;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_welcome;
