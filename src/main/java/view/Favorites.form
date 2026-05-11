@@ -56,13 +56,13 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btn_backHome1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_createPlaylist" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btn_backHome4" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_openPlaylist" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btn_backHome2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_renamePlaylist" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_backHome3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_deletePlaylist" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -71,13 +71,14 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lbl_titleFavorites" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lbl_titleLists" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                  </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="lbl_titleFavorites" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="lbl_titleLists" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,10 +109,10 @@
                   </Group>
               </Group>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_backHome3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_backHome1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_backHome4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_backHome2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_deletePlaylist" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_createPlaylist" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_openPlaylist" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_renamePlaylist" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
@@ -248,7 +249,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btn_backHome1">
+    <Component class="javax.swing.JButton" name="btn_createPlaylist">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
@@ -257,10 +258,10 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_backHome1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_createPlaylistActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_backHome2">
+    <Component class="javax.swing.JButton" name="btn_renamePlaylist">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
@@ -269,10 +270,10 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_backHome2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_renamePlaylistActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_backHome3">
+    <Component class="javax.swing.JButton" name="btn_deletePlaylist">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
@@ -281,10 +282,10 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_backHome3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_deletePlaylistActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_backHome4">
+    <Component class="javax.swing.JButton" name="btn_openPlaylist">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
@@ -293,7 +294,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_backHome4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_openPlaylistActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_playlistName">

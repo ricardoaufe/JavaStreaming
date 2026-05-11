@@ -25,6 +25,7 @@ public class Favorites extends javax.swing.JFrame {
         tbl_favorites.setDefaultEditor(Object.class, null);
 
         c.loadFavorites();
+        c.loadPlaylists();
         
         tbl_favorites.setDefaultEditor(Object.class, null);
         tbl_favorites.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -41,6 +42,14 @@ public class Favorites extends javax.swing.JFrame {
 
     public javax.swing.JTable getTbl_favorites() {
         return tbl_favorites;
+    }
+    
+    public javax.swing.JTable getTbl_playlists() {
+        return tbl_playlists;
+    }
+
+    public javax.swing.JTextField getTxt_playlistName() {
+        return txt_playlistName;
     }
 
     /**
@@ -61,10 +70,10 @@ public class Favorites extends javax.swing.JFrame {
         lbl_titleLists = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_playlists = new javax.swing.JTable();
-        btn_backHome1 = new javax.swing.JButton();
-        btn_backHome2 = new javax.swing.JButton();
-        btn_backHome3 = new javax.swing.JButton();
-        btn_backHome4 = new javax.swing.JButton();
+        btn_createPlaylist = new javax.swing.JButton();
+        btn_renamePlaylist = new javax.swing.JButton();
+        btn_deletePlaylist = new javax.swing.JButton();
+        btn_openPlaylist = new javax.swing.JButton();
         txt_playlistName = new javax.swing.JTextField();
 
         btn_openFavorites.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -114,25 +123,25 @@ public class Favorites extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tbl_playlists);
 
-        btn_backHome1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_backHome1.setText("Nova Lista");
-        btn_backHome1.setToolTipText("");
-        btn_backHome1.addActionListener(this::btn_backHome1ActionPerformed);
+        btn_createPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_createPlaylist.setText("Nova Lista");
+        btn_createPlaylist.setToolTipText("");
+        btn_createPlaylist.addActionListener(this::btn_createPlaylistActionPerformed);
 
-        btn_backHome2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_backHome2.setText("Renomear");
-        btn_backHome2.setToolTipText("");
-        btn_backHome2.addActionListener(this::btn_backHome2ActionPerformed);
+        btn_renamePlaylist.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_renamePlaylist.setText("Renomear");
+        btn_renamePlaylist.setToolTipText("");
+        btn_renamePlaylist.addActionListener(this::btn_renamePlaylistActionPerformed);
 
-        btn_backHome3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_backHome3.setText("Excluir");
-        btn_backHome3.setToolTipText("");
-        btn_backHome3.addActionListener(this::btn_backHome3ActionPerformed);
+        btn_deletePlaylist.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_deletePlaylist.setText("Excluir");
+        btn_deletePlaylist.setToolTipText("");
+        btn_deletePlaylist.addActionListener(this::btn_deletePlaylistActionPerformed);
 
-        btn_backHome4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_backHome4.setText("Abrir");
-        btn_backHome4.setToolTipText("");
-        btn_backHome4.addActionListener(this::btn_backHome4ActionPerformed);
+        btn_openPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_openPlaylist.setText("Abrir");
+        btn_openPlaylist.setToolTipText("");
+        btn_openPlaylist.addActionListener(this::btn_openPlaylistActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,22 +164,23 @@ public class Favorites extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_backHome1)
+                                .addComponent(btn_createPlaylist)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_backHome4)
+                                .addComponent(btn_openPlaylist)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_backHome2)
+                                .addComponent(btn_renamePlaylist)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn_backHome3)
+                                .addComponent(btn_deletePlaylist)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(txt_playlistName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_titleFavorites)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_titleLists)
-                        .addGap(123, 123, 123))))
+                                .addGap(38, 38, 38))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(lbl_titleFavorites)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_titleLists)
+                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,10 +204,10 @@ public class Favorites extends javax.swing.JFrame {
                             .addComponent(btn_backHome))
                         .addGap(57, 57, 57)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_backHome3)
-                    .addComponent(btn_backHome1)
-                    .addComponent(btn_backHome4)
-                    .addComponent(btn_backHome2))
+                    .addComponent(btn_deletePlaylist)
+                    .addComponent(btn_createPlaylist)
+                    .addComponent(btn_openPlaylist)
+                    .addComponent(btn_renamePlaylist))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -218,21 +228,21 @@ public class Favorites extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_removeFavoriteActionPerformed
 
-    private void btn_backHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backHome1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_backHome1ActionPerformed
+    private void btn_createPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createPlaylistActionPerformed
+        c.createPlaylist();
+    }//GEN-LAST:event_btn_createPlaylistActionPerformed
 
-    private void btn_backHome2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backHome2ActionPerformed
+    private void btn_renamePlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_renamePlaylistActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_backHome2ActionPerformed
+    }//GEN-LAST:event_btn_renamePlaylistActionPerformed
 
-    private void btn_backHome3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backHome3ActionPerformed
+    private void btn_deletePlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletePlaylistActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_backHome3ActionPerformed
+    }//GEN-LAST:event_btn_deletePlaylistActionPerformed
 
-    private void btn_backHome4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backHome4ActionPerformed
+    private void btn_openPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_openPlaylistActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_backHome4ActionPerformed
+    }//GEN-LAST:event_btn_openPlaylistActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,12 +271,12 @@ public class Favorites extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_backHome;
-    private javax.swing.JButton btn_backHome1;
-    private javax.swing.JButton btn_backHome2;
-    private javax.swing.JButton btn_backHome3;
-    private javax.swing.JButton btn_backHome4;
+    private javax.swing.JButton btn_createPlaylist;
+    private javax.swing.JButton btn_deletePlaylist;
     private javax.swing.JButton btn_openFavorites;
+    private javax.swing.JButton btn_openPlaylist;
     private javax.swing.JButton btn_removeFavorite;
+    private javax.swing.JButton btn_renamePlaylist;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_titleFavorites;
