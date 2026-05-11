@@ -148,5 +148,41 @@ public class FavoritesControl {
                     "Erro ao carregar playlists.");
         }
     }
+    
+    public void addSelectedFavoriteToPlaylist(){
+        int favoriteRow = screen.getTbl_favorites().getSelectedRow();
+        int playlistRow = screen.getTbl_playlists().getSelectedRow();
+
+        if (favoriteRow == -1) {
+            JOptionPane.showMessageDialog(screen, "Selecione um vídeo favorito.");
+            return;
+        }
+
+        if (playlistRow == -1) {
+            JOptionPane.showMessageDialog(screen, "Selecione uma lista de reprodução.");
+            return;
+        }
+
+        try {
+            int videoId = (int) screen.getTbl_favorites().getValueAt(favoriteRow, 0);
+            int playlistId = (int) screen.getTbl_playlists().getValueAt(playlistRow, 0);
+
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            PlaylistDAO dao = new PlaylistDAO(conn);
+            dao.addVideoToPlaylist(playlistId, videoId);
+
+            JOptionPane.showMessageDialog(screen, "Vídeo adicionado à lista!");
+
+            loadPlaylists();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(screen,
+                    "Erro ao adicionar vídeo à lista:\n" + e.getMessage());
+        }
+    }
 
 }
