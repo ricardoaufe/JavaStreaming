@@ -119,7 +119,7 @@ public class Home extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Título", "Tipo", "Descrição", "Likes", "Dislikes"
+                "Título", "Tipo", "Descrição", "Likes", "Dislikes", "Favorito"
             }
         ));
         jScrollPane2.setViewportView(tbl_videos);
