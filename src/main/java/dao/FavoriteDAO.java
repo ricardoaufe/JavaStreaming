@@ -65,4 +65,20 @@ public class FavoriteDAO {
             addFavorite(userId, videoId);
         }
     }
+    
+    //Carrega no BD os favoritos do usuário logado
+    public ResultSet listFavorites(int userId) throws SQLException {
+    String sql = """
+        SELECT v.id, v.title, v.type, v.description
+        FROM favoritestb f
+        INNER JOIN videostb v ON f.video_id = v.id
+        WHERE f.user_id = ?
+        ORDER BY v.title
+    """;
+
+    PreparedStatement statement = conn.prepareStatement(sql);
+    statement.setInt(1, userId);
+
+    return statement.executeQuery();
+}
 }
