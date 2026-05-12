@@ -1,0 +1,59 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package controller;
+
+import dao.Connect;
+import dao.PlaylistDAO;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import view.PlaylistDetails;
+
+/**
+ *
+ * @author Ricardo Ferreira
+ */
+public class PlaylistDetailsControl {
+    private PlaylistDetails screen;
+    
+    public PlaylistDetailsControl(PlaylistDetails screen){
+        this.screen = screen;
+    }
+    
+    public void loadPlaylistVideos(){
+        try{
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            PlaylistDAO dao = new PlaylistDAO(conn);
+
+            ResultSet result = dao.listPlaylistVideos(screen.getPlaylistId());
+            
+            DefaultTableModel model = (DefaultTableModel)
+                    screen.getTbl_playlistVideos().getModel();
+            
+             model.setRowCount(0);
+
+            while (result.next()) {
+
+                model.addRow(new Object[]{
+                    result.getInt("id"),
+                    result.getInt("position"),
+                    result.getString("title"),
+                    result.getString("type")
+                });
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(screen,
+                    "Erro ao carregar vídeos da playlist.");
+        }
+    }
+}

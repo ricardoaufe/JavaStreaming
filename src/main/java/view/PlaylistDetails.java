@@ -15,6 +15,7 @@ public class PlaylistDetails extends javax.swing.JFrame {
     private model.User user;
     private int playlistId;
     private String playlistName;
+    private controller.PlaylistDetailsControl c;
 
     /**
      * Creates new form PlaylistDetails
@@ -25,6 +26,9 @@ public class PlaylistDetails extends javax.swing.JFrame {
         this.user = user;
         this.playlistId = playlistId;
         this.playlistName = playlistName;
+        c = new controller.PlaylistDetailsControl(this);
+        
+        c.loadPlaylistVideos();
         
         lbl_playlistTitle.setText("Lista: " + playlistName);
         
@@ -62,7 +66,7 @@ public class PlaylistDetails extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbl_playlistTitle.setText("jLabel2");
+        lbl_playlistTitle.setText("Lista:");
 
         tbl_playlistVideos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
