@@ -184,5 +184,20 @@ public class FavoritesControl {
                     "Erro ao adicionar vídeo à lista:\n" + e.getMessage());
         }
     }
+    
+    public void openSelectedPlaylist() {
+        int selectedRow = screen.getTbl_playlists().getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(screen, "Selecione uma lista.");
+            return;
+        }
+
+        int playlistId = (int) screen.getTbl_playlists().getValueAt(selectedRow, 0);
+        String playlistName = screen.getTbl_playlists().getValueAt(selectedRow, 1).toString();
+
+        new view.PlaylistDetails(screen.getUser(), playlistId, playlistName).setVisible(true);
+        screen.dispose();
+    }
 
 }
