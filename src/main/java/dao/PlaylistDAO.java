@@ -63,6 +63,7 @@ public class PlaylistDAO {
 
         statement.executeUpdate();
     }
+    
     public void addVideoToPlaylist(int playlistId, int videoId) throws SQLException {
     String sql = """
         INSERT INTO playlist_videostb (playlist_id, video_id, position)
@@ -79,5 +80,23 @@ public class PlaylistDAO {
     statement.setInt(3, playlistId);
 
     statement.executeUpdate();
+    }
+    
+    public ResultSet listPlaylistVideos(int playlistId) throws SQLException {
+
+    String sql = """
+        SELECT pv.position, v.id, v.title, v.type
+        FROM playlist_videostb pv
+        INNER JOIN videostb v
+            ON pv.video_id = v.id
+        WHERE pv.playlist_id = ?
+        ORDER BY pv.position
+    """;
+
+    PreparedStatement statement = conn.prepareStatement(sql);
+
+    statement.setInt(1, playlistId);
+
+    return statement.executeQuery();
 }
 }
