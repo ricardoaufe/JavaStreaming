@@ -55,7 +55,7 @@ public class HomeControl {
                     videoId,
                     result.getString("title"),
                     result.getString("type"),
-                    result.getString("description"),
+                    result.getString("genre"),
                     likes,
                     dislikes
                 });
