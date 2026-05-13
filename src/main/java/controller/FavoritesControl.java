@@ -115,6 +115,39 @@ public class FavoritesControl {
         }
     }
     
+    public void renameSelectedPlaylist() {
+        int selectedRow = screen.getTbl_playlists().getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(screen, "Selecione uma playlist.");
+            return;
+        }
+
+        String newName = screen.getTxt_playlistName().getText();
+
+        if (newName.isBlank()) {
+            JOptionPane.showMessageDialog(screen, "Digite o novo nome da playlist.");
+            return;
+        }
+
+        try {
+            int playlistId = (int) screen.getTbl_playlists().getValueAt(selectedRow, 0);
+
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            PlaylistDAO dao = new PlaylistDAO(conn);
+            dao.renamePlaylist(playlistId, newName);
+
+            screen.getTxt_playlistName().setText("");
+            loadPlaylists();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(screen, "Erro ao renomear playlist.");
+        }
+    }
+    
     public void deleteSelectedPlaylist() {
 
         int selectedRow = screen.getTbl_playlists().getSelectedRow();

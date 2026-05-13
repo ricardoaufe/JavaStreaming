@@ -257,7 +257,7 @@ public class Favorites extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_createPlaylistActionPerformed
 
     private void btn_renamePlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_renamePlaylistActionPerformed
-        // TODO add your handling code here:
+        c.renameSelectedPlaylist();
     }//GEN-LAST:event_btn_renamePlaylistActionPerformed
 
     private void btn_deletePlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletePlaylistActionPerformed
