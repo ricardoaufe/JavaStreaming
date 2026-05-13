@@ -29,6 +29,10 @@ public class Home extends javax.swing.JFrame {
         tbl_videos.setDefaultEditor(Object.class, null);
         tbl_videos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         
+        tbl_videos.getColumnModel().getColumn(0).setMinWidth(0);
+        tbl_videos.getColumnModel().getColumn(0).setMaxWidth(0);
+        tbl_videos.getColumnModel().getColumn(0).setWidth(0);
+        
         btn_favoriteVideo.setEnabled(false);
 
         tbl_videos.getSelectionModel().addListSelectionListener(e -> {
@@ -50,6 +54,8 @@ public class Home extends javax.swing.JFrame {
         });
 
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
+        
+
     }
 
     public User getUser() {
@@ -113,13 +119,13 @@ public class Home extends javax.swing.JFrame {
 
         tbl_videos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Título", "Tipo", "Gênero", "Likes", "Dislikes", "Favorito"
+                "ID", "Título", "Tipo", "Gênero", "Likes", "Dislikes", "Favorito"
             }
         ));
         jScrollPane2.setViewportView(tbl_videos);

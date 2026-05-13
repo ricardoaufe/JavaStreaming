@@ -70,13 +70,13 @@ public class PlaylistDetails extends javax.swing.JFrame {
 
         tbl_playlistVideos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Ordem", "Título", "Tipo"
+                "ID", "Título", "Tipo"
             }
         ));
         jScrollPane1.setViewportView(tbl_playlistVideos);
