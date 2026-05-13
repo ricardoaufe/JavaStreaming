@@ -30,6 +30,14 @@ public class Favorites extends javax.swing.JFrame {
         tbl_favorites.setDefaultEditor(Object.class, null);
         tbl_favorites.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         btn_removeFavorite.setEnabled(false);
+        
+        tbl_favorites.getColumnModel().getColumn(0).setMinWidth(0);
+        tbl_favorites.getColumnModel().getColumn(0).setMaxWidth(0);
+        tbl_favorites.getColumnModel().getColumn(0).setWidth(0);
+        
+        tbl_playlists.getColumnModel().getColumn(0).setMinWidth(0);
+        tbl_playlists.getColumnModel().getColumn(0).setMaxWidth(0);
+        tbl_playlists.getColumnModel().getColumn(0).setWidth(0);
 
         tbl_favorites.getSelectionModel().addListSelectionListener(e -> {
             btn_removeFavorite.setEnabled(tbl_favorites.getSelectedRow() != -1);
@@ -100,9 +108,17 @@ public class Favorites extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Título", "Tipo", "Descrição"
+                "ID", "Título", "Tipo", "Gênero"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tbl_favorites);
 
         lbl_titleFavorites.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
@@ -245,7 +261,7 @@ public class Favorites extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_renamePlaylistActionPerformed
 
     private void btn_deletePlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deletePlaylistActionPerformed
-        // TODO add your handling code here:
+        c.deleteSelectedPlaylist();
     }//GEN-LAST:event_btn_deletePlaylistActionPerformed
 
     private void btn_openPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_openPlaylistActionPerformed

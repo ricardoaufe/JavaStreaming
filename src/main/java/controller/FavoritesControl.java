@@ -44,7 +44,7 @@ public class FavoritesControl {
                     result.getInt("id"),
                     result.getString("title"),
                     result.getString("type"),
-                    result.getString("description")
+                    result.getString("genre")
                 });
             }
 
@@ -112,6 +112,51 @@ public class FavoritesControl {
 
             JOptionPane.showMessageDialog(screen,
                     "Erro ao criar playlist.");
+        }
+    }
+    
+    public void deleteSelectedPlaylist() {
+
+        int selectedRow = screen.getTbl_playlists().getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(screen,
+                    "Selecione uma playlist.");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                screen,
+                "Deseja excluir esta playlist?",
+                "Confirmar exclusão",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+
+            int playlistId =
+                    (int) screen.getTbl_playlists()
+                            .getValueAt(selectedRow, 0);
+
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            PlaylistDAO dao = new PlaylistDAO(conn);
+
+            dao.deletePlaylist(playlistId);
+
+            loadPlaylists();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(screen,
+                    "Erro ao excluir playlist.");
         }
     }
     

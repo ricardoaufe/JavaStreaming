@@ -69,7 +69,7 @@ public class FavoriteDAO {
     //Carrega no BD os favoritos do usuário logado
     public ResultSet listFavorites(int userId) throws SQLException {
     String sql = """
-        SELECT v.id, v.title, v.type, v.description
+        SELECT v.id, v.title, v.type, v.genre
         FROM favoritestb f
         INNER JOIN videostb v ON f.video_id = v.id
         WHERE f.user_id = ?
