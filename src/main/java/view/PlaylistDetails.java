@@ -84,6 +84,7 @@ public class PlaylistDetails extends javax.swing.JFrame {
         btn_removeVideo.setText("Remover");
 
         btn_backFavorites.setText("Voltar");
+        btn_backFavorites.addActionListener(this::btn_backFavoritesActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,6 +126,11 @@ public class PlaylistDetails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_backFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backFavoritesActionPerformed
+        new view.Favorites(user).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_backFavoritesActionPerformed
 
     /**
      * @param args the command line arguments
