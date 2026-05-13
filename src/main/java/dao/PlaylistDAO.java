@@ -82,6 +82,22 @@ public class PlaylistDAO {
     statement.executeUpdate();
     }
     
+    public void removeVideoFromPlaylist(int playlistId, int videoId)
+            throws SQLException {
+
+        String sql = """
+            DELETE FROM playlist_videostb
+            WHERE playlist_id = ? AND video_id = ?
+        """;
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+
+        statement.setInt(1, playlistId);
+        statement.setInt(2, videoId);
+
+        statement.executeUpdate();
+    }
+    
     public ResultSet listPlaylistVideos(int playlistId) throws SQLException {
 
     String sql = """

@@ -82,6 +82,7 @@ public class PlaylistDetails extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbl_playlistVideos);
 
         btn_removeVideo.setText("Remover");
+        btn_removeVideo.addActionListener(this::btn_removeVideoActionPerformed);
 
         btn_backFavorites.setText("Voltar");
         btn_backFavorites.addActionListener(this::btn_backFavoritesActionPerformed);
@@ -131,6 +132,10 @@ public class PlaylistDetails extends javax.swing.JFrame {
         new view.Favorites(user).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_backFavoritesActionPerformed
+
+    private void btn_removeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeVideoActionPerformed
+        c.removeSelectedVideo();
+    }//GEN-LAST:event_btn_removeVideoActionPerformed
 
     /**
      * @param args the command line arguments
