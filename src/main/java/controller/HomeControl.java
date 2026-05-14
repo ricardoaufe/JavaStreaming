@@ -56,6 +56,7 @@ public class HomeControl {
                     result.getString("title"),
                     result.getString("type"),
                     result.getString("genre"),
+                    result.getString("situation"),
                     likes,
                     dislikes
                 });
@@ -118,10 +119,23 @@ public class HomeControl {
         Connect connect = new Connect();
         Connection conn = connect.getConnection();
 
-        FavoriteDAO dao = new FavoriteDAO(conn);
-        dao.toggleFavorite(userId, videoId);
+       FavoriteDAO dao = new FavoriteDAO(conn);
+        boolean favorited = dao.toggleFavorite(userId, videoId);
 
-        JOptionPane.showMessageDialog(screen, "Favoritos atualizados!");
+        String title = screen.getTbl_videos()
+                .getValueAt(selectedRow, 1)
+                .toString();
+
+        if (favorited) {
+
+            JOptionPane.showMessageDialog(screen,
+                    "\"" + title + "\" foi adicionado aos favoritos!");
+
+        } else {
+
+            JOptionPane.showMessageDialog(screen,
+                    "\"" + title + "\" foi removido dos favoritos!");
+        }
 
     } catch (SQLException e) {
         e.printStackTrace();

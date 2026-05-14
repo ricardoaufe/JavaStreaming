@@ -58,12 +58,19 @@ public class FavoriteDAO {
         statement.executeUpdate();
     }
 
-    public void toggleFavorite(int userId, int videoId) throws SQLException {
+    public boolean toggleFavorite(int userId, int videoId)
+        throws SQLException {
+
         if (isFavorite(userId, videoId)) {
+
             removeFavorite(userId, videoId);
-        } else {
-            addFavorite(userId, videoId);
+
+            return false;
         }
+
+        addFavorite(userId, videoId);
+
+        return true;
     }
     
     //Carrega no BD os favoritos do usuário logado
