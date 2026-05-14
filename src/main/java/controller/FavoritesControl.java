@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Playlist;
 import view.Favorites;
 
 /**
@@ -235,9 +236,15 @@ public class FavoritesControl {
 
             while (result.next()) {
 
+                Playlist playlist = new Playlist(
+                        result.getInt("id"),
+                        result.getString("name"),
+                        screen.getUser()
+                );
+
                 model.addRow(new Object[]{
-                    result.getInt("id"),
-                    result.getString("name"),
+                    playlist.getId(),
+                    playlist.getName(),
                     result.getInt("total_videos")
                 });
             }
