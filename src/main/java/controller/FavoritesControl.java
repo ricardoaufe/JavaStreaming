@@ -259,7 +259,7 @@ public class FavoritesControl {
             e.printStackTrace();
 
             JOptionPane.showMessageDialog(screen,
-                    "Erro ao adicionar vídeo à lista:\n" + e.getMessage());
+                    "Erro ao adicionar vídeo à lista: Vídeo já foi adicionados" );
         }
     }
     

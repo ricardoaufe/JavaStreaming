@@ -42,7 +42,6 @@ public class PlaylistDetailsControl {
 
                 model.addRow(new Object[]{
                     result.getInt("id"),
-                    result.getInt("position"),
                     result.getString("title"),
                     result.getString("type")
                 });

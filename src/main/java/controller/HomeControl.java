@@ -47,6 +47,14 @@ public class HomeControl {
             
             while (result.next()) {
                 int videoId = result.getInt("id");
+                
+                FavoriteDAO favoriteDAO = new FavoriteDAO(conn);
+
+                boolean favorite =
+                        favoriteDAO.isFavorite(
+                                screen.getUser().getId(),
+                                videoId
+                        );
 
                 int likes = reactionDAO.countLikes(videoId);
                 int dislikes = reactionDAO.countDislikes(videoId);
@@ -58,7 +66,8 @@ public class HomeControl {
                     result.getString("genre"),
                     result.getString("situation"),
                     likes,
-                    dislikes
+                    dislikes,
+                    favorite ? "★" : ""    
                 });
             }
             
