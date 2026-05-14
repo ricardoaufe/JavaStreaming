@@ -34,6 +34,11 @@ public class PlaylistDetails extends javax.swing.JFrame {
         
         tbl_playlistVideos.setDefaultEditor(Object.class, null);
         tbl_playlistVideos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
+        tbl_playlistVideos.getColumnModel().getColumn(0).setMinWidth(0);
+        tbl_playlistVideos.getColumnModel().getColumn(0).setMaxWidth(0);
+        tbl_playlistVideos.getColumnModel().getColumn(0).setWidth(0);
+        
     }
     
     public int getPlaylistId() {
