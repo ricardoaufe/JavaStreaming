@@ -119,13 +119,13 @@ public class Home extends javax.swing.JFrame {
 
         tbl_videos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Título", "Tipo", "Gênero", "Likes", "Dislikes", "Favorito"
+                "ID", "Título", "Tipo", "Gênero", "Situação", "Likes", "Dislikes", "Favorito"
             }
         ));
         jScrollPane2.setViewportView(tbl_videos);
@@ -154,7 +154,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(txt_searchVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_searchVideo)
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 116, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +186,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_welcome)
                     .addComponent(btn_Logout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btn_openFavorites)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -199,7 +199,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btn_likeVideo)
                     .addComponent(btn_dislikeVideo)
                     .addComponent(btn_favoriteVideo))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
