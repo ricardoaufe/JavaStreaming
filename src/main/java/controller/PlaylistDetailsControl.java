@@ -6,6 +6,9 @@ package controller;
 
 import dao.Connect;
 import dao.PlaylistDAO;
+import model.Video;
+import model.Films;
+import model.Series;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,11 +42,29 @@ public class PlaylistDetailsControl {
              model.setRowCount(0);
 
             while (result.next()) {
+                String type = result.getString("type");
+
+                Video video;
+
+                if (type.equalsIgnoreCase("Filme")) {
+                    video = new Films(
+                            result.getInt("id"),
+                            result.getString("title"),
+                            result.getString("genre")
+                    );
+                } else {
+                    video = new Series(
+                            result.getInt("id"),
+                            result.getString("title"),
+                            result.getString("genre"),
+                            ""
+                    );
+                }
 
                 model.addRow(new Object[]{
-                    result.getInt("id"),
-                    result.getString("title"),
-                    result.getString("type")
+                    video.getId(),
+                    video.getTitle(),
+                    video.getType()
                 });
             }
 

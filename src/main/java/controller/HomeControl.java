@@ -4,6 +4,9 @@
  */
 package controller;
 
+import model.Video;
+import model.Films;
+import model.Series;
 import dao.Connect;
 import dao.VideoDAO;
 import dao.ReactionDAO;
@@ -27,6 +30,7 @@ public class HomeControl {
     }
 
     public void searchVideo(){
+        //"Pega" o texto digitado no campo de busca
         String title = screen.getTxtSearchVideo().getText();
         
         try{
@@ -37,44 +41,69 @@ public class HomeControl {
             ResultSet result = dao.searchByTitle(title);
             
             ReactionDAO reactionDAO = new ReactionDAO(conn);
-           
-            String text = "";
+            FavoriteDAO favoriteDAO = new FavoriteDAO(conn);
             
             DefaultTableModel model = 
                     (DefaultTableModel) screen.getTbl_videos().getModel();
             
+            //Limpa linhas da tabela antes de mostrar resultado
             model.setRowCount(0);
             
             while (result.next()) {
                 int videoId = result.getInt("id");
+                String type = result.getString("type");
                 
-                FavoriteDAO favoriteDAO = new FavoriteDAO(conn);
-
+                Video video;
+                
+                if (type.equalsIgnoreCase("Filme")) {
+                video = new Films(
+                        videoId,
+                        result.getString("title"),
+                        result.getString("genre"));
+            } else {
+                video = new Series(
+                        videoId,
+                        result.getString("title"),
+                        result.getString("genre"),
+                        result.getString("situation")
+                );
+            }
+                
+                //Usuário logado(getId) favoritou aquele vídeo (videoId)?
                 boolean favorite =
                         favoriteDAO.isFavorite(
                                 screen.getUser().getId(),
                                 videoId
                         );
 
+                //Contagem
                 int likes = reactionDAO.countLikes(videoId);
                 int dislikes = reactionDAO.countDislikes(videoId);
+                
+                String situation = "";
 
+            //Esse obj vídeo é uma série?
+            if (video instanceof Series) {
+                Series s = (Series) video; //Downcasting
+                situation = s.getSituation();
+            }
+                
                 model.addRow(new Object[]{
-                    videoId,
-                    result.getString("title"),
-                    result.getString("type"),
-                    result.getString("genre"),
-                    result.getString("situation"),
+                    video.getId(), //Oculto no Jframe
+                    video.getTitle(),
+                    video.getType(),
+                    video.getGenre(),
+                    situation,
                     likes,
                     dislikes,
-                    favorite ? "★" : ""    
-                });
+                    favorite ? "★" : ""
+                    });
             }
             
             if (model.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(screen, "Nenhum vídeo encontrado.");
             }
-              screen.getTbl_videos().getColumn(title);
+            
         }catch (SQLException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(screen, "Erro ao buscar vídeos: \n" +
@@ -128,7 +157,7 @@ public class HomeControl {
         Connect connect = new Connect();
         Connection conn = connect.getConnection();
 
-       FavoriteDAO dao = new FavoriteDAO(conn);
+        FavoriteDAO dao = new FavoriteDAO(conn);
         boolean favorited = dao.toggleFavorite(userId, videoId);
 
         String title = screen.getTbl_videos()
@@ -153,8 +182,5 @@ public class HomeControl {
                 "Erro ao atualizar favorito:\n" + e.getMessage());
     }
 }
-          
-
-    
-    
+         
 }
