@@ -145,6 +145,7 @@ public class HomeControl {
             JOptionPane.showMessageDialog(screen,
                     "\"" + title + "\" foi removido dos favoritos!");
         }
+        searchVideo();
 
     } catch (SQLException e) {
         e.printStackTrace();
