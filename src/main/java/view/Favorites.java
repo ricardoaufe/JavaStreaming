@@ -19,18 +19,19 @@ public class Favorites extends javax.swing.JFrame {
     public Favorites(User user) {
         initComponents();
         this.user = user;
-        
         c = new controller.FavoritesControl(this);
-
-        tbl_favorites.setDefaultEditor(Object.class, null);
-
-        c.loadFavorites();
-        c.loadPlaylists();
         
+        //Bloqueia edições manuais;
         tbl_favorites.setDefaultEditor(Object.class, null);
-        tbl_favorites.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        btn_removeFavorite.setEnabled(false);
+        tbl_playlists.setDefaultEditor(Object.class, null);
         
+        //Permite selecionar uma linha por vez
+        tbl_favorites.setSelectionMode
+        (javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_playlists.setSelectionMode
+        (javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
+        //Esconde os IDs
         tbl_favorites.getColumnModel().getColumn(0).setMinWidth(0);
         tbl_favorites.getColumnModel().getColumn(0).setMaxWidth(0);
         tbl_favorites.getColumnModel().getColumn(0).setWidth(0);
@@ -38,10 +39,16 @@ public class Favorites extends javax.swing.JFrame {
         tbl_playlists.getColumnModel().getColumn(0).setMinWidth(0);
         tbl_playlists.getColumnModel().getColumn(0).setMaxWidth(0);
         tbl_playlists.getColumnModel().getColumn(0).setWidth(0);
-
+        
+        // Botão começa desabilitado até selecionar um favorito
+        btn_removeFavorite.setEnabled(false);
         tbl_favorites.getSelectionModel().addListSelectionListener(e -> {
             btn_removeFavorite.setEnabled(tbl_favorites.getSelectedRow() != -1);
         });
+        
+        //Carrega os dados do banco ao abrir a tela
+        c.loadFavorites();
+        c.loadPlaylists();
     }
     
     public User getUser() {
@@ -69,7 +76,6 @@ public class Favorites extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_openFavorites = new javax.swing.JButton();
         btn_backHome = new javax.swing.JButton();
         btn_removeFavorite = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -84,10 +90,6 @@ public class Favorites extends javax.swing.JFrame {
         btn_openPlaylist = new javax.swing.JButton();
         txt_playlistName = new javax.swing.JTextField();
         btn_addFavoriteToPlaylist = new javax.swing.JButton();
-
-        btn_openFavorites.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_openFavorites.setText("Favoritos");
-        btn_openFavorites.addActionListener(this::btn_openFavoritesActionPerformed);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -238,11 +240,6 @@ public class Favorites extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_openFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_openFavoritesActionPerformed
-        new view.Favorites(user).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_openFavoritesActionPerformed
-
     private void btn_backHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backHomeActionPerformed
         new view.Home(user).setVisible(true);
         this.dispose();
@@ -302,7 +299,6 @@ public class Favorites extends javax.swing.JFrame {
     private javax.swing.JButton btn_backHome;
     private javax.swing.JButton btn_createPlaylist;
     private javax.swing.JButton btn_deletePlaylist;
-    private javax.swing.JButton btn_openFavorites;
     private javax.swing.JButton btn_openPlaylist;
     private javax.swing.JButton btn_removeFavorite;
     private javax.swing.JButton btn_renamePlaylist;

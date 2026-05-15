@@ -25,9 +25,9 @@ public class FavoriteDAO {
                 "SELECT * FROM favoritestb WHERE user_id = ? AND video_id = ?";
         
         PreparedStatement statement = conn.prepareStatement(sql);
-    statement.setInt(1, userId);
+        statement.setInt(1, userId);
         statement.setInt(2, videoId);
-
+        //Executa
         ResultSet result = statement.executeQuery();
 
         return result.next();
@@ -73,12 +73,12 @@ public class FavoriteDAO {
         return true;
     }
     
-    //Carrega no BD os favoritos do usuário logado
+    //Carrega os favoritos do usuário logado
     public ResultSet listFavorites(int userId) throws SQLException {
     String sql = """
         SELECT v.id, v.title, v.type, v.genre
         FROM favoritestb f
-        INNER JOIN videostb v ON f.video_id = v.id
+        INNER JOIN videostb v ON f.video_id = v.id 
         WHERE f.user_id = ?
         ORDER BY v.title
     """;

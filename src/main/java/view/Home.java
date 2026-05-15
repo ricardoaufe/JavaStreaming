@@ -13,7 +13,9 @@ import model.User;
  */
 public class Home extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
+    private static final java.util.logging.Logger logger = 
+            java.util.logging.Logger.getLogger(Home.class.getName());
+    
     private User user;
     private controller.HomeControl c;
     
@@ -25,34 +27,32 @@ public class Home extends javax.swing.JFrame {
         this.user = user;
         c = new controller.HomeControl(this);
         
-        //Blocks table editing manually;
+        //Bloqueia edições manuais;
         tbl_videos.setDefaultEditor(Object.class, null);
-        tbl_videos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        //Permite seleção de SOMENTE UMA linha
+        tbl_videos.setSelectionMode
+        (javax.swing.ListSelectionModel.SINGLE_SELECTION);
         
+        c.searchVideo();
+        
+        //Esconde ID 
         tbl_videos.getColumnModel().getColumn(0).setMinWidth(0);
         tbl_videos.getColumnModel().getColumn(0).setMaxWidth(0);
         tbl_videos.getColumnModel().getColumn(0).setWidth(0);
         
         btn_favoriteVideo.setEnabled(false);
+        btn_likeVideo.setEnabled(false);
+        btn_dislikeVideo.setEnabled(false);
 
+        //Verifica se há linha selecionada
         tbl_videos.getSelectionModel().addListSelectionListener(e -> {
             boolean selected = tbl_videos.getSelectedRow() != -1;
-
+            //Libera like, dislike e favoritar
             btn_likeVideo.setEnabled(selected);
             btn_dislikeVideo.setEnabled(selected);
             btn_favoriteVideo.setEnabled(selected);
         });
         
-        btn_likeVideo.setEnabled(false);
-        btn_dislikeVideo.setEnabled(false);
-
-        tbl_videos.getSelectionModel().addListSelectionListener(e -> {
-            boolean selected = tbl_videos.getSelectedRow() != -1;
-
-            btn_likeVideo.setEnabled(selected);
-            btn_dislikeVideo.setEnabled(selected);
-        });
-
         lbl_welcome.setText("Bem-vindo(a), " + user.getName());
         
 

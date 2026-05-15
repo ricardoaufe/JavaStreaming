@@ -9,26 +9,17 @@ package model;
  *
  * @author Ricardo Ferreira
  */
+
+//Classe abstrata para centralizar características comuns (id, title, genre)
 public abstract class Video {
     protected int id;
     protected String title;
-    protected String description;
+    protected String genre;
     
-    protected int likes;
-    protected int dislikes;
-    
-    public Video() {
-    }
-
-    public Video(int id, String title, String description) {
+    public Video(int id, String title, String genre) {
         this.id = id;
         this.title = title;
-        this.description = description;
-    }
-
-    public Video(String title, String description) {
-        this.title = title;
-        this.description = description;
+        this.genre = genre;
     }
 
     public int getId() {
@@ -47,14 +38,15 @@ public abstract class Video {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
+    // Método abstrato obriga cada subclasse definir seu tipo.
     public abstract String getType();
     
 }

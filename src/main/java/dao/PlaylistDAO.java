@@ -101,7 +101,7 @@ public class PlaylistDAO {
     public ResultSet listPlaylistVideos(int playlistId) throws SQLException {
 
     String sql = """
-        SELECT pv.position, v.id, v.title, v.type
+        SELECT pv.position, v.id, v.title, v.type, v.genre
         FROM playlist_videostb pv
         INNER JOIN videostb v
             ON pv.video_id = v.id

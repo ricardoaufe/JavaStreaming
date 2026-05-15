@@ -28,7 +28,7 @@ public class VideoDAO {
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, video.getTitle());
-        statement.setString(2, video.getDescription());
+        statement.setString(2, video.getGenre());
         statement.setString(3, video.getType());
         
         statement.executeUpdate();

@@ -29,7 +29,7 @@ public class FavoritesControl {
     public FavoritesControl(Favorites screen) {
         this.screen = screen;
     }
-    
+    //Método para carregar lista favoritos
     public void loadFavorites() {
         try {
             Connect connect = new Connect();
@@ -40,7 +40,8 @@ public class FavoritesControl {
 
             DefaultTableModel model =
                     (DefaultTableModel) screen.getTbl_favorites().getModel();
-
+            
+            //Limpa linhas da tabela antes de mostrar resultado
             model.setRowCount(0);
 
             while (result.next()) {
@@ -78,7 +79,7 @@ public class FavoritesControl {
                     "Erro ao carregar favoritos:\n" + e.getMessage());
         }
     }
-    
+    //Método para remover dos favoritos
     public void removeSelectedFavorite() {
         int selectedRow = screen.getTbl_favorites().getSelectedRow();
 
@@ -88,11 +89,13 @@ public class FavoritesControl {
         }
 
         try {
-            int videoId = (int) screen.getTbl_favorites().getValueAt(selectedRow, 0);
+            int videoId = (int) screen.getTbl_favorites()
+                    .getValueAt(selectedRow, 0);
+            
             int userId = screen.getUser().getId();
-
+            //Instancia classe connect
             Connect connect = new Connect();
-            Connection conn = connect.getConnection();
+            Connection conn = connect.getConnection();//Abre coneão com banco
 
             FavoriteDAO dao = new FavoriteDAO(conn);
             dao.removeFavorite(userId, videoId);
@@ -105,12 +108,13 @@ public class FavoritesControl {
                     "Erro ao remover favorito:\n" + e.getMessage());
         }
     }
-    
+
     public void createPlaylist() {
-
+        //Obtém nome do campo de texto da playlist
         String name = screen.getTxt_playlistName().getText();
-
-        if (name.isBlank()) {
+        
+        //Verifica se usuário deixou campo vazio
+        if (name.isBlank()) { 
             JOptionPane.showMessageDialog(screen,
                     "Digite um nome para a lista.");
             return;
@@ -122,14 +126,15 @@ public class FavoritesControl {
 
             PlaylistDAO dao = new PlaylistDAO(conn);
 
+            //Cria playlist usando ID do usuário e nome digitado
             dao.createPlaylist(
                     screen.getUser().getId(),
                     name
             );
-
+            //Limpa campo de texto
             screen.getTxt_playlistName().setText("");
 
-            loadPlaylists();
+            loadPlaylists();//Atualiza playlists
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -146,7 +151,7 @@ public class FavoritesControl {
             JOptionPane.showMessageDialog(screen, "Selecione uma playlist.");
             return;
         }
-
+        //Solicita nome novo para playlist
         String newName = screen.getTxt_playlistName().getText();
 
         if (newName.isBlank()) {
@@ -155,16 +160,20 @@ public class FavoritesControl {
         }
 
         try {
-            int playlistId = (int) screen.getTbl_playlists().getValueAt(selectedRow, 0);
+            int playlistId = (int) screen.getTbl_playlists()
+                    .getValueAt(selectedRow, 0);
 
             Connect connect = new Connect();
             Connection conn = connect.getConnection();
 
             PlaylistDAO dao = new PlaylistDAO(conn);
+            
             dao.renamePlaylist(playlistId, newName);
-
+            
+            //Limpa campo de texto
             screen.getTxt_playlistName().setText("");
-            loadPlaylists();
+            
+            loadPlaylists();//Atualiza playlists
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -181,23 +190,22 @@ public class FavoritesControl {
                     "Selecione uma playlist.");
             return;
         }
-
+        //Confirmação de deleção
         int confirm = JOptionPane.showConfirmDialog(
                 screen,
                 "Deseja excluir esta playlist?",
                 "Confirmar exclusão",
                 JOptionPane.YES_NO_OPTION
         );
-
+        //Caso escolha NÃO retorna
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
 
         try {
 
-            int playlistId =
-                    (int) screen.getTbl_playlists()
-                            .getValueAt(selectedRow, 0);
+            int playlistId =(int) screen.getTbl_playlists()
+                    .getValueAt(selectedRow, 0);
 
             Connect connect = new Connect();
             Connection conn = connect.getConnection();
@@ -245,7 +253,7 @@ public class FavoritesControl {
                 model.addRow(new Object[]{
                     playlist.getId(),
                     playlist.getName(),
-                    result.getInt("total_videos")
+                    result.getInt("total_videos")//Coluna temp do SQL
                 });
             }
 
@@ -262,18 +270,23 @@ public class FavoritesControl {
         int playlistRow = screen.getTbl_playlists().getSelectedRow();
 
         if (favoriteRow == -1) {
-            JOptionPane.showMessageDialog(screen, "Selecione um vídeo favorito.");
+            JOptionPane
+                .showMessageDialog(screen, "Selecione um vídeo favorito.");
             return;
         }
 
         if (playlistRow == -1) {
-            JOptionPane.showMessageDialog(screen, "Selecione uma lista de reprodução.");
+            JOptionPane
+            .showMessageDialog(screen, "Selecione uma lista de reprodução.");
             return;
         }
 
         try {
-            int videoId = (int) screen.getTbl_favorites().getValueAt(favoriteRow, 0);
-            int playlistId = (int) screen.getTbl_playlists().getValueAt(playlistRow, 0);
+            int videoId = (int) screen.getTbl_favorites()
+                    .getValueAt(favoriteRow, 0);
+            
+            int playlistId = (int) screen.getTbl_playlists()
+                    .getValueAt(playlistRow, 0);
 
             Connect connect = new Connect();
             Connection conn = connect.getConnection();
@@ -301,10 +314,15 @@ public class FavoritesControl {
             return;
         }
 
-        int playlistId = (int) screen.getTbl_playlists().getValueAt(selectedRow, 0);
-        String playlistName = screen.getTbl_playlists().getValueAt(selectedRow, 1).toString();
+        int playlistId = (int) screen.getTbl_playlists()
+                .getValueAt(selectedRow, 0);
+        
+        String playlistName = screen.getTbl_playlists()
+                .getValueAt(selectedRow, 1).toString();
 
-        new view.PlaylistDetails(screen.getUser(), playlistId, playlistName).setVisible(true);
+        new view.PlaylistDetails(screen.getUser(), playlistId, playlistName)
+                .setVisible(true);
+        
         screen.dispose();
     }
 

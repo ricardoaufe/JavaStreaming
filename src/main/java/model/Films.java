@@ -9,8 +9,8 @@ package model;
  * @author Ricardo Ferreira
  */
 public class Films extends Video{
-    public Films(String title, String description){
-        super(title, description);
+    public Films(int id, String title, String genre){
+        super(id, title, genre);
     }
     
     @Override

@@ -18,14 +18,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         c = new controller.LoginControl(this);
-        
-        getRootPane().setDefaultButton(btnLog1);
-
-        btnSign.addActionListener(e -> {
-            SignUp signUp = new SignUp();
-            signUp.setVisible(true);
-            this.dispose();
-        });
+       
     }
 
     public JButton getBtnLog1() {
@@ -130,6 +123,11 @@ public class Login extends javax.swing.JFrame {
 
         btnSign.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSign.setText("Cadastrar");
+        btnSign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignActionPerformed(evt);
+            }
+        });
 
         btnLog1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLog1.setText("Entrar");
@@ -198,6 +196,10 @@ public class Login extends javax.swing.JFrame {
     private void btnLog1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLog1ActionPerformed
         c.userLogin();        // TODO add your handling code here:
     }//GEN-LAST:event_btnLog1ActionPerformed
+
+    private void btnSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignActionPerformed
+        c.openSignUp();
+    }//GEN-LAST:event_btnSignActionPerformed
 
     /**
      * @param args the command line arguments

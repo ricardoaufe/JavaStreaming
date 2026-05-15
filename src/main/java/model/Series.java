@@ -12,8 +12,8 @@ public class Series extends Video implements Situation {
 
     private String situation;
     
-    public Series(String title, String description, String situation) {
-        super(title, description);
+        public Series(int id, String title, String genre, String situation) {
+        super(id,title, genre);
         this.situation = situation;
     }
 
@@ -22,6 +22,8 @@ public class Series extends Video implements Situation {
         return "Serie";
     }
     
+    
+    //Cada série possui sua situação própria
     @Override
     public String getSituation(){
         return situation;

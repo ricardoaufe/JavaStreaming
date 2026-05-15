@@ -111,9 +111,9 @@ public class HomeControl {
         }
     }
             
-            
+    //Método chamado no clique de Like ou Dislike
     public void reactToSelectedVideo(String reactionType){
-
+        //Índice da linha selecionada (caso nenhuma retorna -1)
         int selectedRow = screen.getTbl_videos().getSelectedRow();
 
         if(selectedRow == -1){
@@ -131,7 +131,7 @@ public class HomeControl {
             Connection conn = connect.getConnection();
 
             ReactionDAO dao = new ReactionDAO(conn);
-
+            //Interação
             dao.toggleReaction(userId, videoId, reactionType);
 
             searchVideo();
@@ -141,46 +141,49 @@ public class HomeControl {
             JOptionPane.showMessageDialog(screen, "Erro ao reageir ao vídeo");
         }
     } 
-
+    //Método chamado no clique do Favoritar
     public void toggleFavoriteSelectedVideo() {
-    int selectedRow = screen.getTbl_videos().getSelectedRow();
+        int selectedRow = screen.getTbl_videos().getSelectedRow();
 
-    if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(screen, "Selecione um vídeo.");
-        return;
-    }
-
-    try {
-        int videoId = (int) screen.getTbl_videos().getValueAt(selectedRow, 0);
-        int userId = screen.getUser().getId();
-
-        Connect connect = new Connect();
-        Connection conn = connect.getConnection();
-
-        FavoriteDAO dao = new FavoriteDAO(conn);
-        boolean favorited = dao.toggleFavorite(userId, videoId);
-
-        String title = screen.getTbl_videos()
-                .getValueAt(selectedRow, 1)
-                .toString();
-
-        if (favorited) {
-
-            JOptionPane.showMessageDialog(screen,
-                    "\"" + title + "\" foi adicionado aos favoritos!");
-
-        } else {
-
-            JOptionPane.showMessageDialog(screen,
-                    "\"" + title + "\" foi removido dos favoritos!");
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(screen, "Selecione um vídeo.");
+            return;
         }
-        searchVideo();
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(screen,
-                "Erro ao atualizar favorito:\n" + e.getMessage());
+        try {
+            int videoId = (int) screen.getTbl_videos()
+                    .getValueAt(selectedRow, 0); //Pega linha e coluna da tabela
+            
+            int userId = screen.getUser().getId();
+
+            Connect connect = new Connect();
+            Connection conn = connect.getConnection();
+
+            FavoriteDAO dao = new FavoriteDAO(conn);
+           
+            boolean favorited = dao.toggleFavorite(userId, videoId);
+            //O título fica na coluna 1
+            String title = screen.getTbl_videos()
+                    .getValueAt(selectedRow, 1)
+                    .toString();
+
+            if (favorited) {
+
+                JOptionPane.showMessageDialog(screen,
+                        "\"" + title + "\" foi adicionado aos favoritos!");
+
+            } else {
+
+                JOptionPane.showMessageDialog(screen,
+                        "\"" + title + "\" foi removido dos favoritos!");
+            }
+            searchVideo();//Atualiza
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(screen,
+                    "Erro ao atualizar favorito:\n" + e.getMessage());
+        }
     }
-}
          
 }

@@ -23,9 +23,18 @@ public class SignUpControl {
     }
     
     public void saveUser(){
-        String name = screen3.getTxtName().getText();
-        String signup = screen3.getTxtUserSign().getText();
-        String password = screen3.getTxtPwdSign().getText();
+        String name = screen3.getTxtName().getText().trim();
+        String signup = screen3.getTxtUserSign().getText().trim();
+        String password = screen3.getTxtPwdSign().getText().trim();
+        
+        if (name.isBlank() || signup.isBlank() || password.isBlank()) {
+            JOptionPane.showMessageDialog(screen3,
+                    "Preencha nome, usuário e senha.",
+                    "Campos obrigatórios",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         User user = new User(name, signup, password);
         
         Connect connect = new Connect();

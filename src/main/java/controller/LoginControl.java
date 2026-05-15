@@ -59,5 +59,10 @@ public class LoginControl {
             "Erro", JOptionPane.ERROR_MESSAGE);
         }
       }
-   }
+    public void openSignUp() {
+        view.SignUp signUp = new view.SignUp();
+        signUp.setVisible(true);
+        screen1.dispose();
+    }
+}
     
