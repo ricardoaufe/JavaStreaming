@@ -1,14 +1,12 @@
 # Java Streaming
 
-![Status](https://img.shields.io/badge/STATUS-CONCLUÍDO-green?style=for-the-badge)
 ![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?style=for-the-badge&logo=postgresql)
 ![MVC](https://img.shields.io/badge/Arquitetura-MVC-darkgreen?style=for-the-badge)
 ![POO](https://img.shields.io/badge/Paradigma-POO-purple?style=for-the-badge)
 
 ---
 
-# 💻 Sobre o Projeto
+# Sobre o Projeto
 
 O **Java Streaming** é uma aplicação desktop desenvolvida em Java utilizando Java Swing, arquitetura MVC e persistência em PostgreSQL.
 
@@ -31,21 +29,21 @@ O projeto foi desenvolvido com foco em:
 
 ---
 
-# 🚀 Funcionalidades
+# Funcionalidades
 
-✔ Cadastro de usuários  
-✔ Login integrado ao PostgreSQL  
-✔ Busca dinâmica de vídeos  
-✔ Sistema de likes e dislikes  
-✔ Sistema de favoritos  
-✔ Criação e gerenciamento de playlists  
-✔ Adição e remoção de vídeos em playlists  
-✔ Controle individual de reações por usuário  
-✔ Interface gráfica com JTable interativa  
+ Cadastro de usuários  
+ Login integrado ao PostgreSQL  
+ Busca dinâmica de vídeos  
+ Sistema de likes e dislikes  
+ Sistema de favoritos  
+ Criação e gerenciamento de playlists  
+ Adição e remoção de vídeos em playlists  
+ Controle individual de reações por usuário  
+ Interface gráfica com JTable interativa  
 
 ---
 
-# 🧠 Conceitos Aplicados
+# Conceitos Aplicados
 
 Durante o desenvolvimento foram aplicados conceitos importantes de:
 
@@ -61,7 +59,7 @@ Durante o desenvolvimento foram aplicados conceitos importantes de:
 
 ---
 
-# 🏗 Arquitetura do Sistema
+# Arquitetura do Sistema
 
 O sistema foi estruturado em camadas seguindo o padrão MVC.
 
@@ -74,7 +72,7 @@ O sistema foi estruturado em camadas seguindo o padrão MVC.
 
 ---
 
-# 🎬 Sistema de Vídeos
+# Sistema de Vídeos
 
 O sistema utiliza uma classe abstrata `Video`, responsável por representar características comuns entre filmes e séries.
 
@@ -92,7 +90,7 @@ A classe `Series` também implementa a interface `Situation`, responsável por r
 
 ---
 
-# ❤️ Sistema de Reações
+#️ Sistema de Reações
 
 O sistema de reações foi inspirado em plataformas reais como YouTube.
 
@@ -109,14 +107,11 @@ O controle é realizado através de:
 - consultas SQL com `ON CONFLICT`;
 - lógica de alternância implementada nos DAOs.
 
-Isso garante que:
-
-✔ um usuário tenha apenas uma reação por vídeo;  
-✔ não seja possível possuir like e dislike simultaneamente.  
+Isso garante que um usuário não possa fazer mais de uma reação no mesmo vídeo
 
 ---
 
-# 📂 Sistema de Playlists
+# Sistema de Playlists
 
 O sistema permite que cada usuário crie playlists personalizadas e organize vídeos.
 
@@ -133,7 +128,7 @@ A estrutura orientada a objetos foi representada pela classe `Playlist`, contend
 
 ---
 
-# 🗄 Banco de Dados
+# Banco de Dados
 
 O PostgreSQL foi utilizado para persistência dos dados da aplicação.
 
@@ -157,9 +152,9 @@ Além disso, foram utilizados:
 
 ---
 
-# 📸 Tour pelo Sistema
+#  Tour pelo Sistema
 
-## 🔐 Tela de Login
+## Tela de Login
 
 Sistema de autenticação integrado ao PostgreSQL.
 
@@ -171,7 +166,7 @@ Sistema de autenticação integrado ao PostgreSQL.
 
 ---
 
-## 📝 Cadastro de Usuários
+##  Cadastro de Usuários
 
 Tela responsável pelo cadastro de novos usuários com validação de campos obrigatórios.
 
@@ -183,7 +178,7 @@ Tela responsável pelo cadastro de novos usuários com validação de campos obr
 
 ---
 
-## 🏠 Home do Sistema
+## Home do Sistema
 
 Tela principal contendo:
 
@@ -200,7 +195,7 @@ Tela principal contendo:
 
 ---
 
-## ❤️ Favoritos e Playlists
+## Favoritos e Playlists
 
 Gerenciamento completo de favoritos e listas personalizadas.
 
@@ -212,7 +207,7 @@ Gerenciamento completo de favoritos e listas personalizadas.
 
 ---
 
-# 🛠 Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 | Categoria | Tecnologias |
 | :--- | :--- |
@@ -226,7 +221,7 @@ Gerenciamento completo de favoritos e listas personalizadas.
 
 ---
 
-# ⚡ Desafios do Projeto
+#Desafios do Projeto
 
 Durante o desenvolvimento, alguns dos principais desafios enfrentados foram:
 
@@ -240,7 +235,7 @@ Durante o desenvolvimento, alguns dos principais desafios enfrentados foram:
 
 ---
 
-# 📚 Aprendizados
+# Aprendizados
 
 O projeto proporcionou experiência prática em:
 
@@ -255,7 +250,7 @@ Além disso, o desenvolvimento reforçou conceitos importantes de organização 
 
 ---
 
-# ▶ Como Executar
+#Como Executar
 
 ## Pré-requisitos
 
@@ -283,7 +278,7 @@ git clone https://github.com/seuusuario/java-streaming.git
 
 ---
 
-# 👨‍💻 Autor
+# Autor
 
 Ricardo Ferreira
 
