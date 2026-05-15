@@ -10,12 +10,12 @@ import dao.PlaylistDAO;
 import model.Video;
 import model.Films;
 import model.Series;
+import model.Playlist;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Playlist;
 import view.Favorites;
 
 /**

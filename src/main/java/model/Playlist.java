@@ -13,8 +13,9 @@ public class Playlist {
 
     private int id;
     private String name;
+    //Usuário dono da playlist
     private User user;
-
+    //Composição playlists para Vídeo
     private ArrayList<Video> videos;
 
     public Playlist(int id, String name, User user) {
